@@ -89,7 +89,6 @@ struct ArcadeGameView: View {
             gameLogic.restartGame()
         }
     }
-    
     /**
      * ### Function responsible for presenting the main screen
      * At the moment it is not being used, but it could be used in a Pause menu for example.
