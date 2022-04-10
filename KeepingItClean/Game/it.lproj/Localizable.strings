@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  KeepingItClean
+
+  Created by Fabrizio Petrellese on 02/04/22.
+  
+*/
+
+// MainScreenView
+
+"swipeToMove" = "Trascina per muoverti";
