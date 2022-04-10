@@ -75,7 +75,6 @@ struct ArcadeGameView: View {
         }
         .onChange(of: gameLogic.isGameOver) { _ in
             if gameLogic.isGameOver {
-                
                 /** # PRO TIP!
                  * You can experiment by adding other types of animations here before presenting the game over screen.
                  */
