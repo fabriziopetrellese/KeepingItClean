@@ -95,7 +95,6 @@ struct ArcadeGameView: View {
     private func presentMainScreen() {
         self.currentGameState = .mainScreen
     }
-    
     /**
      * ### Function responsible for presenting the game over screen.
      * It changes the current game state to present the GameOverView.
