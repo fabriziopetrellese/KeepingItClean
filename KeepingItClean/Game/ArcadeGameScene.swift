@@ -7,86 +7,99 @@ import SpriteKit
 import SwiftUI
 
 class ArcadeGameScene: SKScene {
+    var player: SKSpriteNode!
     var playerPosition = CGPoint()
     var startTouch = CGPoint()
     var background = SKSpriteNode(imageNamed: "background")
     var endLine = SKShapeNode(rectOf: CGSize(width: 890, height: 10))
-    let lostLifeSound = SKAction.playSoundFileNamed("lostLife4", waitForCompletion: false)
+    let lostLifeSound = SKAction.playSoundFileNamed("lostLife2", waitForCompletion: false)
+    let bottleCatched = SKAction.playSoundFileNamed("collision2", waitForCompletion: false)
+    let powerup = SKAction.playSoundFileNamed("goldBottle2", waitForCompletion: false)
     
-    /**
-     * # The Game Logic
-     *     The game logic keeps track of the game variables
-     *   you can use it to display information on the SwiftUI view,
-     *   for example, and comunicate with the Game Scene.
-     **/
     var gameLogic: ArcadeGameLogic = ArcadeGameLogic.shared
-    
-    // Keeps track of when the last update happend.
-    // Used to calculate how much time has passed between updates.
     var lastUpdate: TimeInterval = 0
-    
-    var player: SKSpriteNode!
-    
-//    var isMovingToTheRight: Bool = false
-//    var isMovingToTheLeft: Bool = false
+    var goldBottle: Bool = false
+    var timer: Int = 0
     
     override func didMove(to view: SKView) {
+        
+        addPollution()
         self.setUpGame()
         self.setUpPhysicsWorld()
         background.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
         background.zPosition = 1
         addChild(background)
         
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            self.myTimer()
+        })
+    }
+    
+    func addPollution() {
         
+        if gameLogic.plasticTouches > 0 && gameLogic.plasticTouches < 2 {
+            let pollution = SKSpriteNode(imageNamed: "Riga1")
+            pollution.zPosition = 1
+            pollution.position = CGPoint(x: self.frame.width/2, y: self.frame.height/12.2)
+            addChild(pollution)
+        }
+        
+        if gameLogic.plasticTouches > 1 && gameLogic.plasticTouches < 3 {
+            let pollution = SKSpriteNode(imageNamed: "Riga2")
+            pollution.zPosition = 1
+            pollution.position = CGPoint(x: self.frame.width/1.997, y: self.frame.height/7.56)
+            addChild(pollution)
+        }
+    }
+    
+    func myTimer() {
+        
+        run(.wait(forDuration: 1), completion: {
+            
+            self.timer += 1
+            
+            if (self.timer % 30) == 0{
+                self.goldBottle = true
+            }
+            
+            if (self.timer % 45) == 0 {
+                self.physicsWorld.gravity = CGVector(dx: 0, dy: self.physicsWorld.gravity.dy - 0.35)
+            }
+            
+            self.myTimer()
+        })
     }
     
     override func update(_ currentTime: TimeInterval) {
-        // ...
-//        if isMovingToTheRight {
-//            self.moveRight()
-//        }
-//
-//        if isMovingToTheLeft {
-//            self.moveLeft()
-//        }
-        // If the game over condition is met, the game will finish
+        
         if self.isGameOver {
             self.finishGame()
         }
         
-        // The first time the update function is called we must initialize the
-        // lastUpdate variable
         if self.lastUpdate == 0 { self.lastUpdate = currentTime }
         
-        // Calculates how much time has passed since the last update
         let timeElapsedSinceLastUpdate = currentTime - self.lastUpdate
-        // Increments the length of the game session at the game logic
         self.gameLogic.increaseSessionTime(by: timeElapsedSinceLastUpdate)
         
         self.lastUpdate = currentTime
     }
 }
 
-// MARK: - Game Scene Set Up
 extension ArcadeGameScene {
     
     private func setUpGame() {
         self.gameLogic.setUpGame()
-//        self.backgroundColor = SKColor.systemCyan
-//        if gameLogic.plasticTouches < 3 {
         let playerInitialPosition = CGPoint(x: self.frame.width/2, y: self.frame.height/2.5)
         self.createPlayer(at: playerInitialPosition)
         
         self.startAsteroidsCycle()
-//        }
         
         let endLineInitialPosition = CGPoint(x: self.frame.width/2, y: self.frame.height/3)
         self.createEndLine(at: endLineInitialPosition)
     }
     
     private func setUpPhysicsWorld() {
-        // TODO: Customize!
-//        physicsWorld.gravity = CGVector(dx: 0, dy: -1.7) [BUILD NUMERO 3]
+//        physicsWorld.gravity = CGVector(dx: 0, dy: -1.7)
         physicsWorld.gravity = CGVector(dx: 0, dy: -1.45)
         physicsWorld.contactDelegate = self
     }
@@ -138,8 +151,7 @@ extension ArcadeGameScene {
     
     func startAsteroidsCycle() {
         let createAsteroidAction = SKAction.run(createAsteroid)
-//        let waitAction = SKAction.wait(forDuration: 0.25)
-        let waitAction = SKAction.wait(forDuration: 0.32)
+        let waitAction = SKAction.wait(forDuration: 0.37)
         
         let createAndWaitAction = SKAction.sequence([createAsteroidAction, waitAction])
         let asteroidCycleAction = SKAction.repeatForever(createAndWaitAction)
@@ -148,20 +160,6 @@ extension ArcadeGameScene {
     }
 }
 
-// MARK: - Player Movement
-//extension ArcadeGameScene {
-//    private func moveLeft() {
-//        self.player.physicsBody?
-//            .applyForce(CGVector(dx: 5, dy: 0))
-//        print("Moving Left: \(player.physicsBody!.velocity)")
-//    }
-//    private func moveRight() {
-//        self.player.physicsBody?
-//            .applyForce(CGVector(dx: -5, dy: 0))
-//        print("Moving Right: \(player.physicsBody!.velocity)")
-//    }
-//}
-// MARK: - Handle Player Inputs
 extension ArcadeGameScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -181,7 +179,6 @@ extension ArcadeGameScene {
         player.position.x += deltaX
         
         //set x flip based on delta
-//        player.xScale = deltaX < 0 ? 1 : -1
         if deltaX < 0 {
             player.xScale = 1
         } else if deltaX > 0 {
@@ -194,51 +191,24 @@ extension ArcadeGameScene {
     }
 }
 
-
-// MARK: - Game Over Condition
 extension ArcadeGameScene {
     
-    /**
-     * Implement the Game Over condition.
-     * Remember that an arcade game always ends! How will the player eventually lose?
-     *
-     * Some examples of game over conditions are:
-     * - The time is over!
-     * - The player health is depleated!
-     * - The enemies have completed their goal!
-     * - The screen is full!
-     **/
-    
     var isGameOver: Bool {
-        // TODO: Customize!
-        
-        // Did you reach the time limit?
-        // Are the health points depleted?
-        // Did an enemy cross a position it should not have crossed?
         
         return gameLogic.isGameOver
     }
     
     private func finishGame() {
         
-        // TODO: Customize!
+        
+        if gameLogic.currentScore > gameLogic.highScore {
+            gameLogic.highScore = gameLogic.currentScore
+        }
         
         gameLogic.isGameOver = true
     }
-    
 }
 
-// MARK: - Register Score
-extension ArcadeGameScene {
-    
-    private func registerScore() {
-        
-        // TODO: Customize!
-    }
-    
-}
-
-// MARK: - Asteroids
 extension ArcadeGameScene {
     
     private func createAsteroid() {
@@ -247,11 +217,9 @@ extension ArcadeGameScene {
     }
     
     private func randomAsteroidPosition() -> CGPoint {
-//        let initialX: CGFloat = 25
-//        let finalX: CGFloat = self.frame.width - 25
         
-        let initialX: CGFloat = gameLogic.currentScore < 100 ? 115 : 25
-        let finalX: CGFloat = gameLogic.currentScore < 100 ? self.frame.width - 115 : self.frame.width - 25
+        let initialX: CGFloat = self.timer < 60 ? 115 : 25
+        let finalX: CGFloat = self.timer < 60 ? self.frame.width - 115 : self.frame.width - 25
         
         let positionX = CGFloat.random(in: initialX...finalX)
         let positionY = frame.height - 100
@@ -260,8 +228,19 @@ extension ArcadeGameScene {
     }
     
     private func newAsteroid(at position: CGPoint) {
-        let newAsteroid = SKSpriteNode(imageNamed: "plasticBottle")
-        newAsteroid.name = "asteroid"
+        let newAsteroid: SKSpriteNode
+        
+        if goldBottle {
+            newAsteroid = SKSpriteNode(imageNamed: "goldBottle")
+        } else {
+            newAsteroid = SKSpriteNode(imageNamed: "plasticBottle")
+        }
+        
+        newAsteroid.name = goldBottle ? "goldBottle" : "asteroid"
+        
+        if goldBottle {
+            goldBottle = false
+        }
         
         newAsteroid.size = CGSize(width: 55, height: 55)
         newAsteroid.xScale = CGFloat(1)
@@ -284,9 +263,7 @@ extension ArcadeGameScene {
             SKAction.removeFromParent()
         ]))
     }
-    
 }
-
 
 struct PhysicsCategory {
     static let none     : UInt32 = 0
@@ -296,7 +273,6 @@ struct PhysicsCategory {
     static let endLine  : UInt32 = 0b101
 }
 
-// MARK: - Contacts and Collisions
 extension ArcadeGameScene: SKPhysicsContactDelegate {
     
     
@@ -313,18 +289,35 @@ extension ArcadeGameScene: SKPhysicsContactDelegate {
             
             if(firstBody.node?.name == "player" && secondBody.node?.name == "asteroid") {
                 gameLogic.score(points: 1)
-//                let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
-                let impactFeedback = UIImpactFeedbackGenerator(style: .soft)
-                    impactFeedback.impactOccurred()
+                run(bottleCatched)
             }
+            
             if(firstBody.node?.name != "player" && secondBody.node?.name == "asteroid") {
                 gameLogic.loseHeart()
                 run(lostLifeSound)
                 gameLogic.bottleTouches()
+                addPollution()
             }
-            if gameLogic.plasticTouches > 2 {
-                finishGame()
+        }
+        
+        if let node = secondBody.node, node.name == "goldBottle" {
+            node.removeFromParent()
+            
+            if(firstBody.node?.name == "player" && secondBody.node?.name == "goldBottle") {
+                gameLogic.score(points: 50)
+                run(powerup)
             }
+            
+            if(firstBody.node?.name != "player" && secondBody.node?.name == "goldBottle") {
+                gameLogic.loseHeart()
+                run(lostLifeSound)
+                gameLogic.bottleTouches()
+                addPollution()
+            }
+        }
+        
+        if gameLogic.plasticTouches > 2 {
+            finishGame()
         }
     }
 }

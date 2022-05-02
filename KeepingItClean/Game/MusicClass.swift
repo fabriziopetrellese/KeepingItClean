@@ -14,7 +14,7 @@ class MusicClass {
     
     func setup(){
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "music8bit", ofType: "mp3")!))
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "newMusic", ofType: "mp3")!))
             audioPlayer.prepareToPlay()
         } catch {
             print(error)
@@ -24,14 +24,8 @@ class MusicClass {
     func play() {
         audioPlayer.numberOfLoops = -1
         audioPlayer.play()
-//        audioPlayer.volume = 0.03
         audioPlayer.volume = 0.2
         isPlaying = true
-    }
-    
-    func pause() {
-        audioPlayer.pause()
-        isPlaying = false
     }
     
     func stop() {

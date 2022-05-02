@@ -19,10 +19,12 @@
 		271CB26E27D6A58A00615359 /* ArcadeGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB26D27D6A58A00615359 /* ArcadeGameScene.swift */; };
 		271CB27027D74CAF00615359 /* GameDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB26F27D74CAF00615359 /* GameDurationView.swift */; };
 		271CB27227D74CB900615359 /* GameScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB27127D74CB900615359 /* GameScoreView.swift */; };
-		4925F08D27F68744000CED1C /* music8bit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4925F08C27F68744000CED1C /* music8bit.mp3 */; };
 		4925F08F27F6880C000CED1C /* MusicClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4925F08E27F6880C000CED1C /* MusicClass.swift */; };
-		498BC00127F7DCD7007A78F5 /* lostLife4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 498BC00027F7DCD7007A78F5 /* lostLife4.mp3 */; };
 		4997180D27F382750079717B /* Chava.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4997180C27F382750079717B /* Chava.ttf */; };
+		49B45193281EECA000F214AE /* newMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49B45192281EECA000F214AE /* newMusic.mp3 */; };
+		49DCF0D02809B73900A6D0B3 /* collision2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49DCF0CF2809B73900A6D0B3 /* collision2.mp3 */; };
+		49DCF0D42809E44500A6D0B3 /* goldBottle2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49DCF0D32809E44500A6D0B3 /* goldBottle2.mp3 */; };
+		49DCF0D82809EC9A00A6D0B3 /* lostLife2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49DCF0D72809EC9A00A6D0B3 /* lostLife2.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,11 +41,13 @@
 		271CB26D27D6A58A00615359 /* ArcadeGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeGameScene.swift; sourceTree = "<group>"; };
 		271CB26F27D74CAF00615359 /* GameDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDurationView.swift; sourceTree = "<group>"; };
 		271CB27127D74CB900615359 /* GameScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreView.swift; sourceTree = "<group>"; };
-		4925F08C27F68744000CED1C /* music8bit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music8bit.mp3; sourceTree = "<group>"; };
 		4925F08E27F6880C000CED1C /* MusicClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicClass.swift; sourceTree = "<group>"; };
-		498BC00027F7DCD7007A78F5 /* lostLife4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lostLife4.mp3; sourceTree = "<group>"; };
 		4997180B27F3594E0079717B /* KeepingItClean-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeepingItClean-Info.plist"; sourceTree = "<group>"; };
 		4997180C27F382750079717B /* Chava.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Chava.ttf; sourceTree = "<group>"; };
+		49B45192281EECA000F214AE /* newMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = newMusic.mp3; sourceTree = "<group>"; };
+		49DCF0CF2809B73900A6D0B3 /* collision2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = collision2.mp3; sourceTree = "<group>"; };
+		49DCF0D32809E44500A6D0B3 /* goldBottle2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = goldBottle2.mp3; sourceTree = "<group>"; };
+		49DCF0D72809EC9A00A6D0B3 /* lostLife2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lostLife2.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +109,9 @@
 				271CB26D27D6A58A00615359 /* ArcadeGameScene.swift */,
 				271CB25E27D656A800615359 /* ArcadeGameLogic.swift */,
 				271CB26927D6571000615359 /* Game Over */,
-				4997180C27F382750079717B /* Chava.ttf */,
-				4925F08C27F68744000CED1C /* music8bit.mp3 */,
-				498BC00027F7DCD7007A78F5 /* lostLife4.mp3 */,
+				49DCF0D9280D5EC900A6D0B3 /* Sounds */,
 				4925F08E27F6880C000CED1C /* MusicClass.swift */,
+				4997180C27F382750079717B /* Chava.ttf */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -135,6 +138,17 @@
 				271CB26A27D6659600615359 /* Constants.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49DCF0D9280D5EC900A6D0B3 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				49B45192281EECA000F214AE /* newMusic.mp3 */,
+				49DCF0D72809EC9A00A6D0B3 /* lostLife2.mp3 */,
+				49DCF0CF2809B73900A6D0B3 /* collision2.mp3 */,
+				49DCF0D32809E44500A6D0B3 /* goldBottle2.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,10 +210,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4997180D27F382750079717B /* Chava.ttf in Resources */,
-				498BC00127F7DCD7007A78F5 /* lostLife4.mp3 in Resources */,
+				49DCF0D02809B73900A6D0B3 /* collision2.mp3 in Resources */,
 				271CB25827D6569900615359 /* Preview Assets.xcassets in Resources */,
+				49B45193281EECA000F214AE /* newMusic.mp3 in Resources */,
+				49DCF0D82809EC9A00A6D0B3 /* lostLife2.mp3 in Resources */,
 				271CB25527D6569900615359 /* Assets.xcassets in Resources */,
-				4925F08D27F68744000CED1C /* music8bit.mp3 in Resources */,
+				49DCF0D42809E44500A6D0B3 /* goldBottle2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
