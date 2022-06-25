@@ -48,23 +48,30 @@ Analytics
 We will not use third-party Service providers to monitor and analyze the use of our Service.
 Email Marketing
 
-We will not use Your Personal Data to contact You with newsletters, marketing or promotional materials and other information that may be of interest to You. 
-# Children's Privacy
+We will not use Your Personal Data to contact You with newsletters, marketing or promotional materials and other information that may be of interest to You.
+
+## Detailed Information on the Processing of Your Personal Data.
+We will not use Service Providers.
+### Analytics
+We will not use third-party Service providers to monitor and analyze the use of our Service.
+### Email Marketing
+We will not use Your Personal Data to contact You with newsletters, marketing or promotional materials and other information that may be of interest to You.
+## Children's Privacy
 
 Our Service does not address anyone under the age of 4. We do not knowingly collect personally identifiable information from anyone under the age of 4. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 4 without verification of parental consent, We take steps to remove that information from Our servers.
 
 If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information.
-# Links to Other Websites
+## Links to Other Websites
 
 Our Service does not contain links to other websites that are not operated by Us.
-# Changes to this Privacy Policy
+## Changes to this Privacy Policy
 
 We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.
 
 We will let You know via social media and website on Our Service, prior to the change becoming effective and update the "Last updated" date at the top of this Privacy Policy.
 
 You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
-# Contact Us
+## Contact Us
 
 If you have any questions about this Privacy Policy, You can contact us:
 
