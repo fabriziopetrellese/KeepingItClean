@@ -40,16 +40,27 @@ When You access the Service by or through a mobile device, We may collect certai
 
 #### Information Collected while Using the Application
 
-We do not collect any of your information. We do not ask you for any Personal Data, so The Company will not retain or transfer Your Personal Data. 
-Detailed Information on the Processing of Your Personal Data
-
-We use PixalBay’s API to get the images for the items in the app.
-Analytics
-We will not use third-party Service providers to monitor and analyze the use of our Service.
-Email Marketing
-
-We will not use Your Personal Data to contact You with newsletters, marketing or promotional materials and other information that may be of interest to You.
-
+We do not collect any of your information.
+## Use of Your Personal Data
+We do not ask you for any Personal Data.
+## Retention of Your Personal Data
+The Company will not retain Your Personal Data.
+## Transfer of Your Personal Data
+The Company will not transfer Your Personal Data.
+## Disclosure of Your Personal Data
+### Business Transactions
+If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.
+### Law enforcement
+Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).
+### Other legal requirements
+The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:
+* Comply with a legal obligation
+* Protect and defend the rights or property of the Company
+* Prevent or investigate possible wrongdoing in connection with the Service
+* Protect the personal safety of Users of the Service or the public
+* Protect against legal liability
+## Security of Your Personal Data
+The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.
 ## Detailed Information on the Processing of Your Personal Data.
 We will not use Service Providers.
 ### Analytics
